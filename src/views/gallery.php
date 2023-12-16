@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <div class="main">
+            
+        <nav class="menu">
+            <ul id="bar">
+               <li><a href="index.html">Home Page</a></li>
+               <li><a href="#">Gallery</a></li>
+               <li><a href="form.html">Form</a></li>
+               <?php if(isset($_SESSION['user_id'])): $user = $_SESSION['user_name']; ?>
+                    <li>Hi, <?php echo $user ?></li>
+                <?php endif; ?>
+                <li id="log">
+                    <a href="login">
+                    <?php
+                    echo("Log in");
+                    ?>
+                    </a>
+                </li>
+             </ul>
+       </nav>
+       
+       <div class="content">
+            <div id="gallery">
+                <svg style="display: none;">
+                    <defs>
+                        <filter id="noise">
+                            <feTurbulence
+                            baseFrequency="0.7,0.8"
+                            seed="0"
+                            type="fractalNoise"
+                            result="static"
+                            >
+                            <animate
+                                attributeName="seed"
+                                values="0;100"
+                                dur="800ms"
+                                repeatCount="1"
+                                begin="card.mouseenter"
+                            />
+                            </feTurbulence>
+                            <feDisplacementMap 
+                            in="SourceGraphic" 
+                            in2="static" 
+                            scale="0"
+                            >
+                            <animate
+                                attributeName="scale"
+                                values="0;50;0"
+                                dur="800ms"
+                                repeatCount="1"
+                                begin="card.mouseenter"
+                            />
+                            </feDisplacementMap>
+                        </filter>
+                    </defs>
+                </svg>
+                <div id="title">
+                    <h1>A gallery of AI generated images</h1>
+                    <a href="https://www.craiyon.com" target="_blank"><img id="logo" src="../resources/photo-ai.svg" alt="gallery logo"></a>
+                </div>
+                <div id="display">
+                    <div class="card">
+                     <a href="./resources/photo1.png" target="_blank"><img src="./resources/photo1.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo2.png" target="_blank"><img src="./resources/photo2.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo3.png" target="_blank"><img src="./resources/photo3.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo4.png" target="_blank"><img src="./resources/photo4.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo5.png" target="_blank"><img src="./resources/photo5.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo6.png" target="_blank"><img src="./resources/photo6.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo7.png" target="_blank"><img src="./resources/photo7.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo8.png" target="_blank"><img src="./resources/photo8.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo9.png" target="_blank"><img src="./resources/photo9.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo10.png" target="_blank"><img src="./resources/photo10.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo11.png" target="_blank"><img src="./resources/photo11.png" alt="image of a guitar"></a>
+                    </div>
+                    <div class="card">
+                     <a href="./resources/photo12.png" target="_blank"><img src="./resources/photo12.png" alt="image of a guitar"></a>
+                    </div>
+                </div>
+            </div>
+       </div>
+       <footer>
+        AUTHOR - JAN STĄSIEK
+    </footer>
+    </div>
+</body>
+</html>

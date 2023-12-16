@@ -1,0 +1,55 @@
+#title{
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+}
+
+#logo{
+  width: 100px;
+}
+
+#log{
+  float: right;
+}
+
+.card{
+  width: 256px;
+  aspect-ratio: 1/1;
+  border: 0.2rem solid rgb(255 255 255 / 15%);
+  border-radius: 2%;
+  overflow: hidden;
+}
+
+.card > a > img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  filter: url(#noise);
+    
+}
+
+.card:hover > a > img {
+  animation: pulse 800ms ease-in-out;
+}
+
+#gallery{
+  width: 60%;
+  max-height: fit-content;
+}
+
+#display{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  row-gap: 5vh;
+}
+
+@keyframes pulse{
+  from, to{
+    transform: scale(1);
+  }
+
+  50%{
+    transform: scale(1.08);
+  }
+}

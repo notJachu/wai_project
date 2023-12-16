@@ -4,4 +4,6 @@
 /composer.lock
 
 # Ignore Node.js dependencies
-./src/web/node_modules/
+src/web/node_modules/
+src/web/package-lock.json
+src/web/chosen/

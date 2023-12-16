@@ -1,0 +1,33 @@
+form{
+    text-align: left;
+    ;
+}
+
+.question{
+    padding: 5px;
+    font-size: large;
+}
+
+#Other{
+    background-color: #3f3f3f;
+}
+
+#guitar{
+    width: 20%;
+    aspect-ratio: 0.5;
+}
+
+
+.finalButton{
+    margin: 10px;
+    border: none;
+    padding: 10px 20px;
+    background-color: #3f3f3f;
+    border-radius: 16px;
+}
+
+
+input[type=text], [type=password]{
+    border-radius: 5px;
+    margin: 3px;
+}
