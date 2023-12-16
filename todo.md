@@ -4,7 +4,7 @@
 to implement
 
 
-- fix repo
+- do stuff from desktop
 - log in 
 - register user
 - log out
