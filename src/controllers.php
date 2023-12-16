@@ -20,9 +20,10 @@ function signup(&$model) {
         $repeat = $_POST['password_repeat'];
         if($pass === $repeat){
             $model['name'] = $_POST['user'];
+            $_SESSION['fromRegister'] = true; // flag to display notification
             $hash = password_hash($pass, PASSWORD_DEFAULT);
             register_user($user, $hash);
-            return 'redirect:signedup'; //instead of viwew should call function for failed login
+            return 'redirect:login'; //instead of viwew should call function for failed login
         }else{
             //todo tell user that name is taken
             //todo redirect to main page when fail is accsesd not via redirect
@@ -35,8 +36,9 @@ function signup(&$model) {
     }   
 }
 
-function register_success(&$model){
-
+function logout(&$model){
+    session_destroy();
+    return 'redirect:gallery';
 }
 
 function fail(&$model){
@@ -61,6 +63,10 @@ function login(&$model){
             return 'login_view';
         }
     }else{
+        if(isset($_SESSION['fromRegister'])){
+            $model['hasRegistered'] = true;
+            unset($_SESSION['fromRegister']);
+        }
         return 'login_view';
     }
 }

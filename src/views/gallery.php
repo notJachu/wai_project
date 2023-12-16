@@ -19,11 +19,19 @@
                     <li>Hi, <?php echo $user ?></li>
                 <?php endif; ?>
                 <li id="log">
-                    <a href="login">
-                    <?php
-                    echo("Log in");
-                    ?>
-                    </a>
+                    <?php if(isset($_SESSION['user_id'])): ?>
+                        <a href="logout">
+                        <?php
+                        echo("Log out");
+                        ?>
+                        </a>
+                    <?php else: ?>
+                        <a href="login">
+                        <?php
+                        echo("Log in");
+                        ?>
+                        </a>
+                    <?php endif; ?>
                 </li>
              </ul>
        </nav>

@@ -23,6 +23,11 @@
                     <?php echo $error; ?>
                 </div>
             <?php endif; ?>
+            <?php if(isset($hasRegistered)): ?>
+                <div class="notification">
+                    <?php echo "Registered, now log in" ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </body>
