@@ -3,6 +3,8 @@
 
 to implement
 
+
+- fix repo
 - log in 
 - register user
 - log out
