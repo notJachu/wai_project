@@ -1,0 +1,7 @@
+# Ignore Composer files
+/vendor/
+/composer.phar
+/composer.lock
+
+# Ignore Node.js dependencies
+./src/web/node_modules/
