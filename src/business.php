@@ -18,6 +18,16 @@ function get_db()
 }
 
 
+function remove_files(){
+    $db = get_db();
+    $db->files->deleteMany([]);
+}
+
+function remove_users(){
+    $db = get_db();
+    $db->users->deleteMany([]);
+}
+
 function register_user($user, $hash){
     $db = get_db();
     $db->users->insertOne([
@@ -30,6 +40,19 @@ function get_user($user) {
     $db = get_db();
     $res = $db->users->findOne(['login' => $user]);
     return $res;
+}
+
+function get_thumbnails(){
+    $db = get_db();
+    $res = $db->files->find();
+    $thumbnails = [];
+    foreach($res as $file){
+        $thumbnails[] = [
+            'name'=>$file['name'],
+            'path'=> "thumb_" . $file['name'],
+        ];
+    }
+    return $thumbnails;
 }
 
 function verify_file($file, &$model){

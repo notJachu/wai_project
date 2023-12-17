@@ -2,14 +2,13 @@
 require_once 'business.php';
 
 function index(&$model){
+    //remove_files();
+   // remove_users();
     return 'index';
 }
 
 function gallery(&$model){
-    //todo log in 
-    //todo sign in 
-    //todo checking if logged in 
-    //todo  
+    $model['images'] = get_thumbnails();
     return 'gallery';
 }
 

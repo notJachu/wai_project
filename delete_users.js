@@ -1,0 +1,1 @@
+await db.collection('users').deleteMany({});
