@@ -47,7 +47,7 @@ function fail(&$model){
 
 function upload(&$model){
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if(verify_file($_FILES['fileUp'])){
+        if(verify_file($_FILES['fileUp'], $model)){
             if(upload_file($_FILES['fileUp'])){
                 return 'redirect:gallery';
             }
@@ -60,8 +60,6 @@ function upload(&$model){
         }
         else{
             print_r($_FILES);
-            $model['error'] = 'Failed to upload file';
-            $model['desc'] = 'File is too big or has wrong format';
             return 'upload_view';
         }
     }

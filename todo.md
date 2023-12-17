@@ -3,9 +3,8 @@
 
 to implement
 
-
-- upload images
 - image privacy setting
+- "saved images" checkbox
 - miniatures (php GD)
 - ajax sugestions
 

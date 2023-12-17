@@ -32,13 +32,17 @@ function get_user($user) {
     return $res;
 }
 
-function verify_file($file){
+function verify_file($file, &$model){
     $allowed = array('png', 'jpg');
     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
     if(!in_array($ext, $allowed)){
+        $model['error'] = true;
+        $model['desc'] = 'File type not allowed';
         return false;
     }
     if($file['size'] > MB){
+        $model['error'] = true;
+        $model['desc'] = 'File is too big (max 1MB)';
         return false;
     }
     return true;
