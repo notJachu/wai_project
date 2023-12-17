@@ -8,8 +8,9 @@
     <div class="main">
         <div class="content">
             <form method="POST" action="upload" enctype="multipart/form-data">
-                <input type="file" name="fileUp">
+                <input type="file" name="fileUp" required>
                 <br>
+                <input type="text" name="watermark" id="water" required>
                 <input class="finalButton" type="submit" value="Upload">
             </form>
             <?php if(isset($error)): ?>

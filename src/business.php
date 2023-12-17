@@ -48,6 +48,26 @@ function verify_file($file, &$model){
     return true;
 }
 
+function create_miniature($img, $ext){
+    
+
+    return $img;
+}
+
+function create_watermark($img, $watermark, $upload_dir, $name, $ext){
+    $font = './fonts/Roboto-Black.ttf';
+    $textclor = imagecolorallocate($img, 255, 255, 255);    
+    imagettftext($img, 20, 0, 10, 20, $textclor, $font, $watermark);
+    if ($ext === 'jpg'){
+        imagejpeg($img, $upload_dir . $name);
+        return true;
+    } else if ($ext === 'png'){
+        imagepng($img, $upload_dir . $name);
+        return true;
+    }   
+    return false;
+}   
+
 function save_file($file){
     $upload_dir = __DIR__ . '/web/images/';
     if(!file_exists($upload_dir)){
@@ -65,6 +85,25 @@ function upload_file($file){
     if(!save_file($file)){
         return false;
     }
+    
+    // opens image according to format
+
+    $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+    if($ext === 'jpg'){
+        $img = imagecreatefromjpeg($upload_dir . $file['name']);
+    } else if($ext === 'png'){
+        $img = imagecreatefrompng($upload_dir . $file['name']);
+    } else {
+        return false;
+    }
+    
+    // creates watermark
+    $name = 'marked_' . $file['name'];
+    if(!create_watermark($img, $_POST['watermark'], $upload_dir, $name, $ext)){
+        return false;
+    }
+
+
     if(isset($_SESSION['user_id'])){
         $id = $_SESSION['user_id'];
     } else {
