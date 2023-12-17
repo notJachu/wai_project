@@ -48,10 +48,24 @@ function verify_file($file, &$model){
     return true;
 }
 
-function create_miniature($img, $ext){
-    
+function create_miniature($img, $upload_dir, $name, $ext){
+    $width = imagesx($img);
+    $height = imagesy($img);
 
-    return $img;
+    $thumb = imagecreatetruecolor(200, 125);
+    imagecopyresampled($thumb, $img, 0, 0, 0, 0, 200, 125, $width, $height);
+
+    if ($ext === 'jpg'){
+        imagejpeg($thumb, $upload_dir . $name);
+        imagedestroy($thumb);
+        return true;
+    } else if ($ext === 'png'){
+        imagepng($thumb, $upload_dir . $name);
+        imagedestroy($thumb);
+        return true;
+    }
+
+    return false;
 }
 
 function create_watermark($img, $watermark, $upload_dir, $name, $ext){
@@ -97,6 +111,12 @@ function upload_file($file){
         return false;
     }
     
+     // creates miniature
+     $name = 'thumb_' . $file['name'];
+     if(!create_miniature($img, $upload_dir, $name, $ext)){
+         return false;
+     }
+
     // creates watermark
     $name = 'marked_' . $file['name'];
     if(!create_watermark($img, $_POST['watermark'], $upload_dir, $name, $ext)){
