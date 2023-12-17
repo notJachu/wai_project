@@ -45,6 +45,22 @@ function fail(&$model){
     
 }
 
+function upload(&$model){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(verify_file($_FILES['file'])){
+            
+        }
+        else{
+            $model['error'] = 'Failed to upload file';
+            $model['desc'] = 'File is too big or has wrong format';
+            return 'upload_view';
+        }
+    }
+    else {
+        return 'upload_view';
+    }
+}
+
 function login(&$model){
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $login = $_POST['user'];

@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '../../vendor/autoload.php';
 
+define('MB', 1048576);
+
 function get_db()
 {
     $mongo = new MongoDB\Client(
@@ -30,3 +32,14 @@ function get_user($user) {
     return $res;
 }
 
+function verify_file($file){
+    $allowed = array('png', 'jpg');
+    $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+    if(!in_array($ext, $allowed)){
+        return false;
+    }
+    if($file['size'] > MB){
+        return false;
+    }
+    return true;
+}

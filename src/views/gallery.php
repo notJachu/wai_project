@@ -114,6 +114,8 @@
                     </div>
                 </div>
             </div>
+            <div class="break"></div>
+            <a id="upl" href="upload">Your photo not here? Upload it!</a>
        </div>
        <footer>
         AUTHOR - JAN STĄSIEK

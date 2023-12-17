@@ -8,4 +8,5 @@ $routing = [
     '/signup' => 'signup',
     '/gallery' => 'gallery',
     '/logout' => 'logout',
+    '/upload' => 'upload',
 ];
