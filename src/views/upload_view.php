@@ -7,14 +7,14 @@
 <body>
     <div class="main">
         <div class="content">
-            <form>
-                <input type="file" name="file">
+            <form method="POST" action="upload" enctype="multipart/form-data">
+                <input type="file" name="fileUp">
                 <br>
                 <input class="finalButton" type="submit" value="Upload">
             </form>
-            <?php if(isset($model['error'])): ?>
+            <?php if(isset($error)): ?>
                 <div class="error">
-                    <?php echo $model['desc']; ?>
+                    <?php echo $desc; ?>
                 </div>
             <?php endif; ?>
         </div>

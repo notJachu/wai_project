@@ -43,3 +43,35 @@ function verify_file($file){
     }
     return true;
 }
+
+function save_file($file){
+    $upload_dir = __DIR__ . '/web/images/';
+    if(!file_exists($upload_dir)){
+        mkdir($upload_dir);
+    }
+    if(move_uploaded_file($file['tmp_name'], $upload_dir . $file['name'])){
+        return true;
+    }
+    return false;
+}
+
+function upload_file($file){
+    $upload_dir = __DIR__ . '/web/images/';
+    $db = get_db();
+    if(!save_file($file)){
+        return false;
+    }
+    if(isset($_SESSION['user_id'])){
+        $id = $_SESSION['user_id'];
+    } else {
+        $id = null;
+    }
+    $db->files->insertOne([
+        'name'=>$file['name'],
+        'size'=>$file['size'],
+        'type'=>$file['type'],
+        'user'=>$id,
+        'path'=> $upload_dir . $file['name']
+    ]);
+    return true;
+}

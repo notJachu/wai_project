@@ -7,3 +7,6 @@
 src/web/node_modules/
 src/web/package-lock.json
 src/web/chosen/
+
+# Ignore images folder (having images on git no bueno)
+src/web/images/
