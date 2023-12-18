@@ -177,7 +177,9 @@ function upload_file($file){
         'size'=>$file['size'],
         'type'=>$file['type'],
         'user'=>$id,
-        'path'=> $upload_dir . $file['name']
+        'path'=> $upload_dir . $file['name'],
+        'isPrivate'=> $_POST['private'],
+        'author'=> $_POST['author'],
     ]);
     return true;
 }

@@ -9,4 +9,5 @@ $routing = [
     '/gallery' => 'gallery',
     '/logout' => 'logout',
     '/upload' => 'upload',
+    '/card' => 'card'
 ];

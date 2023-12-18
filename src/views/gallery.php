@@ -51,7 +51,7 @@
                     </div>
                    <?php foreach($images as $image): ?>
                         <div class="card">
-                            <a href="./images/<?php echo $image['path'] ?>" target="_blank">
+                            <a href="./card?img=<?php echo $image['name'] ?>">
                              <img src="./images/<?php echo $image['path'] ?>" alt="asdasdas">
                             </a>
                         </div>

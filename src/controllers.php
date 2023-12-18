@@ -19,7 +19,7 @@ function signup(&$model) {
         $repeat = $_POST['password_repeat'];
         if (is_name_taken($user)){
             $model['error'] = 'Username already taken';
-            return 'redirect:fail';
+            return 'signup_view';
             exit;
         }
         if($pass === $repeat){
@@ -32,7 +32,7 @@ function signup(&$model) {
             //todo tell user that name is taken
             //todo redirect to main page when fail is accsesd not via redirect
             $model['error'] = 'Failed to register user';
-            return 'redirect:fail';
+            return 'signup_view';
             exit;
         }
     } else {
@@ -45,8 +45,8 @@ function logout(&$model){
     return 'redirect:gallery';
 }
 
-function fail(&$model){
-    
+function card(&$model){
+    return 'card_view';
 }
 
 function upload(&$model){
