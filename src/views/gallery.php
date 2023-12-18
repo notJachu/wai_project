@@ -42,7 +42,7 @@
                     </defs>
                 </svg>
                 <div id="title">
-                    <h1>A gallery of AI generated images</h1>
+                    <h1>Gallery of posted images</h1>
                     <a href="https://www.craiyon.com" target="_blank"><img id="logo" src="../resources/photo-ai.svg" alt="gallery logo"></a>
                 </div>
                 <div id="display">
@@ -51,11 +51,17 @@
                     </div>
                    <?php foreach($images as $image): ?>
                         <div class="card">
-                            <img src="./images/<?php echo $image['path'] ?>" alt="asdasdas">
+                            <a href="./images/<?php echo $image['path'] ?>" target="_blank">
+                             <img src="./images/<?php echo $image['path'] ?>" alt="asdasdas">
+                            </a>
                         </div>
                     <?php endforeach; ?>
                     <?php print_r($images) ?>
+                    <?php if(isset($_GET['page'])): ?>
+                         <?php print_r($_GET['page']) ?>        
+                    <?php endif; ?>
                 </div>
+                <a href="gallery?page=2">Next page</a>
             </div>
             <div class="break"></div>
             <a id="upl" href="upload">Your photo not here? Upload it!</a>
