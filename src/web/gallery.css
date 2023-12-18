@@ -15,7 +15,7 @@
 
 .card{
   width: 200px;
-  height: 125px;
+  height: fit-content;
   border: 0.2rem solid rgb(255 255 255 / 15%);
   border-radius: 2%;
   overflow: hidden;
@@ -24,9 +24,7 @@
 .card > a > img{
   height: 100%;
   width: 100%;
-  object-fit: cover;
-  filter: url(#noise);
-    
+  object-fit: contain;  
 }
 
 .card:hover > a > img {

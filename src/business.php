@@ -67,16 +67,26 @@ function get_thumbnails(){
     $res = $db->files->find([], $opt);
     $thumbnails = [];
     foreach($res as $file){
-        if (isset($_SESSION['user_id'])){
-            if ($file['isPrivate'] === 'true' && $file['user'] !== $_SESSION['user_id']){
+       // if (isset($_SESSION['user_id'])){
+      //      if ($file['isPrivate'] === 'true' && $file['user'] !== $_SESSION['user_id']){
+                //continue;
+      //      }
+      //  } else{
+        if ($file['isPrivate'] === 'true'){
+            if (isset($_SESSION['user_id'])){
+                if ($file['user'] !== $_SESSION['user_id']){
+                    continue;
+                }
+            } else{
                 continue;
             }
-        } else{
+        }
             $thumbnails[] = [
                 'name'=>$file['name'],
                 'path'=> "thumb_" . $file['name'],
+                'id'=>$file['_id']
             ];
-        }
+     //   }
     }
     return $thumbnails;
 }

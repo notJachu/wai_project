@@ -2,12 +2,15 @@
 require_once 'business.php';
 
 function index(&$model){
-    //remove_files();
-   // remove_users();
+    remove_files();
+    remove_users();
     return 'index';
 }
 
 function gallery(&$model){
+    if(!isset($_SESSION['saved'])){
+        $_SESSION['saved'] = [];
+    }
     $model['images'] = get_thumbnails();
     return 'gallery';
 }
@@ -96,4 +99,32 @@ function login(&$model){
         }
         return 'login_view';
     }
+}
+
+function save(){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if (!isset($_POST['images'])){
+            return 'redirect:gallery';
+        }
+        $images = $_POST['images'];
+        if (!isset($_SESSION['user_id'])){
+            return 'redirect:login';
+        }
+        if(!isset($_SESSION['saved'])){
+            $_SESSION['saved'] = [];
+        }
+        foreach($images as $image){
+            if(!in_array($image, $_SESSION['saved'])){
+                $_SESSION['saved'][] = $image;
+            }
+        }
+        return 'redirect:gallery';
+    }
+    else{
+        return 'redirect:gallery';
+    }
+}
+
+function saved(&$model){
+    return 'saved_view';
 }

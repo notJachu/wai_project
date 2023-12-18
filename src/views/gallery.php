@@ -37,9 +37,8 @@
        </nav>
        
        <div class="content">
-            <div id="gallery">
+            <form id="gallery" action="save" method="post">
                 
-                    </defs>
                 </svg>
                 <div id="title">
                     <h1>Gallery of posted images</h1>
@@ -53,7 +52,18 @@
                         <div class="card">
                             <a href="./card?img=<?php echo $image['name'] ?>">
                              <img src="./images/<?php echo $image['path'] ?>" alt="asdasdas">
-                            </a>
+                            </a> <br>
+                            <label>Save
+                                <input type="checkbox" name="images[]" value="<?php echo $image['id'] ?>" 
+                                <?php if (in_array($image['id'], $_SESSION['saved']) ) :?>
+
+                                    <?php echo 'checked' ?>
+
+                                <?php endif; ?>
+                                >
+                            </label>
+                            
+                            
                         </div>
                     <?php endforeach; ?>
                     <?php print_r($images) ?>
@@ -61,8 +71,9 @@
                          <?php print_r($_GET['page']) ?>        
                     <?php endif; ?>
                 </div>
-                <a href="gallery?page=2">Next page</a>
-            </div>
+                <a href="gallery?page=2">Next page</a> <br>
+                <input type="submit" value="Save">
+            </form>
             <div class="break"></div>
             <a id="upl" href="upload">Your photo not here? Upload it!</a>
        </div>
