@@ -3,6 +3,7 @@
 require_once __DIR__ . '../../vendor/autoload.php';
 
 define('MB', 1048576);
+define("PAGE_SIZE", 15);
 
 function get_db()
 {
@@ -43,8 +44,17 @@ function get_user($user) {
 }
 
 function get_thumbnails(){
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page = 1;
+    }
     $db = get_db();
-    $res = $db->files->find();
+    $opt = [
+        'skip' => ($page - 1) * PAGE_SIZE,
+        'limit' => PAGE_SIZE,
+    ];
+    $res = $db->files->find([], $opt);
     $thumbnails = [];
     foreach($res as $file){
         $thumbnails[] = [
