@@ -125,6 +125,12 @@ function save(){
     }
 }
 
+
 function saved(&$model){
+    if(!isset($_SESSION['saved'])){
+        $_SESSION['saved'] = [];
+    }
+    $model['images'] = get_saved();
+    $model['file'] = $_SESSION['saved'];
     return 'saved_view';
 }

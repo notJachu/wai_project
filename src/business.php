@@ -1,5 +1,5 @@
 <?php
-
+use MongoDB\BSON\ObjectID;
 require_once __DIR__ . '../../vendor/autoload.php';
 
 define('MB', 1048576);
@@ -51,6 +51,26 @@ function get_user($user) {
     $db = get_db();
     $res = $db->users->findOne(['login' => $user]);
     return $res;
+}
+
+
+function get_saved(){
+    $db = get_db();
+    if(!isset($_SESSION['saved'])){
+        $_SESSION['saved'] = [];
+    }
+   
+    $thumbnails = [];
+    foreach($_SESSION['saved'] as $file){
+
+        $res = $db->files->findOne(['_id' => new ObjectID($file)]); // extension bug lol
+        $thumbnails[] = [
+            'name'=>$res['name'],
+            'path'=> "thumb_" . $res['name'],
+            'id'=>$res['_id']
+        ];
+    }
+    return $thumbnails;
 }
 
 function get_thumbnails(){
