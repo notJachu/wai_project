@@ -11,6 +11,8 @@
     <div class="main">
         <div class="content">
             <form action="signup" method="POST">
+                <label for="mail">E-mail</label>
+                <input type="text" name="mial" required><br>
                 <label for="user">Username</label>
                 <input type="text" name="user" required><br>
                 <label for="password">Password</label>

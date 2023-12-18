@@ -17,6 +17,11 @@ function signup(&$model) {
         $user = $_POST['user'];
         $pass = $_POST['password'];
         $repeat = $_POST['password_repeat'];
+        if (is_name_taken($user)){
+            $model['error'] = 'Username already taken';
+            return 'redirect:fail';
+            exit;
+        }
         if($pass === $repeat){
             $model['name'] = $_POST['user'];
             $_SESSION['fromRegister'] = true; // flag to display notification

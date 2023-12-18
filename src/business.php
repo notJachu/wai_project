@@ -29,11 +29,21 @@ function remove_users(){
     $db->users->deleteMany([]);
 }
 
+function is_name_taken($user){
+    $db = get_db();
+    $res = $db->users->findOne(['login' => $user]);
+    if($res){
+        return true;
+    }
+    return false;
+}
+
 function register_user($user, $hash){
     $db = get_db();
     $db->users->insertOne([
         'login'=>$user,
-        'hash'=>$hash
+        'hash'=>$hash,
+        'mail'=>$_POST['mail']
     ]);
 }
 
