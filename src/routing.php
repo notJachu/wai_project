@@ -12,4 +12,5 @@ $routing = [
     '/card' => 'card',
     '/saved' => 'saved',
     '/save' => 'save',
+    '/remove' => 'remove',
 ];

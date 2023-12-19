@@ -94,7 +94,7 @@ function get_thumbnails(){
       //  } else{
         if ($file['isPrivate'] === 'true'){
             if (isset($_SESSION['user_id'])){
-                if ($file['user'] !== $_SESSION['user_id']){
+                if ($file['user'] != $_SESSION['user_id']){
                     continue;
                 }
             } else{

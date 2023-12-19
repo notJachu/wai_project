@@ -9,23 +9,27 @@
 <body>
 <div class="main">
         <div class="content">
-            <?php print_r($images) ?>
-            <?php print_r($file) ?>
-            <?php foreach($images as $image): ?>
-                <div class="card">
-                    <a href="./card?img=<?php echo $image['name'] ?>">
-                        <img src="./images/<?php echo $image['path'] ?>" alt="asdasdas">
-                    </a> <br>
-                    <label>Save
-                        <input type="checkbox" name="images[]" value="<?php echo $image['id'] ?>" 
-                        <?php if (in_array($image['id'], $_SESSION['saved']) ) :?>
+            <?php //print_r($images) ?>
+            <?php //print_r($file) ?>
+            <form action="remove" method="post">
+                <?php foreach($images as $image): ?>
+                    <div class="card">
+                        <a href="./card?img=<?php echo $image['name'] ?>">
+                            <img src="./images/<?php echo $image['path'] ?>" alt="asdasdas">
+                        </a> <br>
+                        <label>Save
+                            <input type="checkbox" name="images[]" value="<?php echo $image['id'] ?>" 
+                            <?php if (in_array($image['id'], $_SESSION['saved']) ) :?>
 
-                            <?php echo 'checked' ?>
-                        <?php endif; ?>
-                        >
-                    </label>
-                </div>
-            <?php endforeach; ?>
+                                <?php echo 'checked' ?>
+                            <?php endif; ?>
+                            >
+                        </label>
+                    </div>
+                <?php endforeach; ?>
+                <input type="submit" value="Remove" class="finalButton">
+            </form>
+            
         </div>
     </div>
 </body>

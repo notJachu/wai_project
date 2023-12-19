@@ -132,5 +132,33 @@ function saved(&$model){
     }
     $model['images'] = get_saved();
     $model['file'] = $_SESSION['saved'];
+    if(!isset($_SESSION['user_id'])){
+        return 'redirect:login';
+    }
     return 'saved_view';
+}
+
+function remove(&$model){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if (!isset($_POST['images'])){
+            return 'redirect:gallery';
+        }
+        $images = $_POST['images'];
+        if (!isset($_SESSION['user_id'])){
+            return 'redirect:login';
+        }
+        if(!isset($_SESSION['saved'])){
+            $_SESSION['saved'] = [];
+        }
+        foreach($images as $image){
+            if(in_array($image, $_SESSION['saved'])){
+                $key = array_search($image, $_SESSION['saved']);
+                unset($_SESSION['saved'][$key]);
+            }
+        }
+        return 'redirect:saved';
+    }
+    else{
+        return 'redirect:saved';
+    }
 }
