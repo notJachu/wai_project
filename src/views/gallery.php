@@ -50,7 +50,7 @@
                     </div>
                    <?php foreach($images as $image): ?>
                         <div class="card">
-                            <a href="./card?img=<?php echo $image['name'] ?>">
+                            <a href="./card?id=<?php echo $image['id'] ?>">
                              <img src="./images/<?php echo $image['path'] ?>" alt="asdasdas">
                             </a> <br>
                             <label>Save

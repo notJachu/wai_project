@@ -18,6 +18,8 @@
                         <?php echo 'value="' . $_SESSION['user_name'] . '"' ?>
                     <?php endif; ?>
                 > <br>
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" required> <br>
                 <div <?php if(!isset($_SESSION['user_id'])): ?>
                     <?php echo 'style="display: none;"' ?>
                 <?php endif; ?>

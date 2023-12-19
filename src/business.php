@@ -73,6 +73,12 @@ function get_saved(){
     return $thumbnails;
 }
 
+function get_file($id){
+    $db = get_db();
+    $res = $db->files->findOne(['_id' => new ObjectID($id)]);
+    return $res;
+}
+
 function get_thumbnails(){
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
@@ -216,6 +222,7 @@ function upload_file($file){
         'path'=> $upload_dir . $file['name'],
         'isPrivate'=> $_POST['private'],
         'author'=> $_POST['author'],
+        'title'=> $_POST['title']
     ]);
     return true;
 }

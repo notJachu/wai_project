@@ -49,6 +49,13 @@ function logout(&$model){
 }
 
 function card(&$model){
+    $img_id = $_GET['id'];
+    $img = get_file($img_id);
+    $model['image'] = $img['name'];
+    $model['id'] = $img_id;
+    $model['author'] = $img['author'];
+    $model['title'] = $img['title'];
+    
     return 'card_view';
 }
 
