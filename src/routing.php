@@ -2,8 +2,6 @@
 
 $routing = [
     '/' => 'index',
-    'register' => 'signup',
-    'fail' => 'fail',
     '/login' => 'login',
     '/signup' => 'signup',
     '/gallery' => 'gallery',
@@ -14,5 +12,6 @@ $routing = [
     '/save' => 'save',
     '/remove' => 'remove',
     '/finder' => 'finder',
-    '/ajax' => 'ajax'
+    '/ajax' => 'ajax',
+    '/image' => 'image'
 ];

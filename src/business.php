@@ -79,6 +79,22 @@ function get_file($id){
     return $res;
 }
 
+
+function is_img_private($name){
+    $db = get_db();
+    if(strpos($name, 'marked_') !== false){
+        $name = str_replace('marked_', '', $name);
+    }
+    if (strpos($name, 'thumb_') !== false){
+        $name = str_replace('thumb_', '', $name);
+    }
+    $res = $db->files->findOne(['name' => $name]);
+    if ($res['isPrivate'] === 'true'){
+        return true;
+    }
+    return false;
+}
+
 function get_thumbnails(){
     if (isset($_GET['page'])) {
         $page = $_GET['page'];

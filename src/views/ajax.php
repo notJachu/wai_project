@@ -5,7 +5,7 @@ $thumbnails = get_images_by_query($_GET['query']);
 $to_send = [];
 foreach($thumbnails as $thumb){
     $html = " <a href='./card?id=" . $thumb['id'] . "'>
-                <img src='./images/thumb_" . $thumb['name'] . "' alt='image'>
+                <img src='image?name=thumb_" . $thumb['name'] . "' alt='image'>
               </a>";
         $to_send[] = [
         'html'=>$html,
