@@ -45,9 +45,6 @@
                     <a href="https://www.craiyon.com" target="_blank"><img id="logo" src="../resources/photo-ai.svg" alt="gallery logo"></a>
                 </div>
                 <div id="display">
-                    <div class="card">
-                     <a href="./resources/photo1.png" target="_blank"><img src="./resources/photo1.png" alt="image of a guitar"></a>
-                    </div>
                    <?php foreach($images as $image): ?>
                         <div class="card">
                             <a href="./card?id=<?php echo $image['id'] ?>">
@@ -66,9 +63,9 @@
                             
                         </div>
                     <?php endforeach; ?>
-                    <?php print_r($images) ?>
+                    <?php //print_r($images) ?>
                     <?php if(isset($_GET['page'])): ?>
-                         <?php print_r($_GET['page']) ?>        
+                         <?php //print_r($_GET['page']) ?>        
                     <?php endif; ?>
                 </div>
                 <a href="gallery?page=2">Next page</a> <br>

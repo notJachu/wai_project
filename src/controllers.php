@@ -2,8 +2,8 @@
 require_once 'business.php';
 
 function index(&$model){
-    remove_files();
-    remove_users();
+    //remove_files();
+    //remove_users();
     return 'index';
 }
 
