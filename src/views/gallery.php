@@ -68,7 +68,16 @@
                          <?php //print_r($_GET['page']) ?>        
                     <?php endif; ?>
                 </div>
-                <a href="gallery?page=2">Next page</a> <br>
+                <?php if (isset($_GET['page']) && $_GET['page'] > 0): ?>
+                    <?php if ($_GET['page'] > 1): ?>
+                        <a href="gallery?page=<?php echo $_GET['page'] - 1?>">Previous page</a>
+                    <?php endif; ?>
+                    <?php echo "Page: " . $_GET['page']?>
+                    <a href="gallery?page=<?php echo $_GET['page'] + 1?>">Next page</a> <br>
+                <?php endif; ?>
+                <?php if (!isset($_GET['page'])): ?>
+                    <a href="gallery?page=2">Next page</a> <br>
+                <?php endif; ?>
                 <input type="submit" value="Save">
             </form>
             <div class="break"></div>
