@@ -204,7 +204,7 @@ function image(&$model){
             return 'image';
         } 
         else{
-            header('HTTP/1.0 404 Not Found');
+            return 'redirect:gallery';
         }
     }
     else{
