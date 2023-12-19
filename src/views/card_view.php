@@ -9,7 +9,7 @@
 <body>
     <div class="main">
         <div class="content">
-            <img src="./images/marked_<?php echo $image?>" alt=""> <br>
+            <img src="image?name=marked_<?php echo $image?>" alt=""> <br>
             <p>Aouthor: <?php echo $author?></p>
             <p>Title: <?php echo $title?></p>
         </div>

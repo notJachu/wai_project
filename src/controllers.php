@@ -182,3 +182,32 @@ function ajax(){
         return 'redirect:gallery';
     }
 }
+
+function image(&$model){
+    if(strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'xmlhttprequest' || 1 == 1){    
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $img = get_file($id);
+            $model['image'] = $img['name'];
+            $model['isPrivate'] = $img['isPrivate'];
+           return 'image';
+        }
+        else if (isset($_GET['name'])){
+            $name = $_GET['name'];
+            $model['image'] = $name;
+            $model['isPrivate'] = is_img_private($name);
+
+            $img = file_get_contents('./images/' . $name);
+
+            $model['img'] = $img;
+            $model['name'] = $name;
+            return 'image';
+        } 
+        else{
+            return 'redirect:gallery';
+        }
+    }
+    else{
+        return 'redirect:gallery';
+    }
+}
