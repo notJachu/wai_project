@@ -13,4 +13,6 @@ $routing = [
     '/saved' => 'saved',
     '/save' => 'save',
     '/remove' => 'remove',
+    '/finder' => 'finder',
+    '/ajax' => 'ajax'
 ];

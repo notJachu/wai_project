@@ -226,3 +226,20 @@ function upload_file($file){
     ]);
     return true;
 }
+
+function get_images_by_query($name){
+    $query = [ 'title' =>
+        [ '$regex' => $name, '$options' => 'i' ]
+    ];
+    $db = get_db();
+    $res = $db->files->find($query);
+    $thumbnails = [];
+    foreach($res as $file){
+        $thumbnails[] = [
+            'name'=>$file['name'],
+            'path'=> "thumb_" . $file['name'],
+            'id'=>$file['_id']
+        ];
+    }
+    return $thumbnails;
+}

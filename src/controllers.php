@@ -169,3 +169,16 @@ function remove(&$model){
         return 'redirect:saved';
     }
 }
+
+function finder(&$model){
+    return 'finder_view';
+}
+
+function ajax(){
+    if(strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'xmlhttprequest'){    
+        return 'ajax';  
+    }
+    else{
+        return 'redirect:gallery';
+    }
+}
